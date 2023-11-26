@@ -1,0 +1,42 @@
+/*
+Pattern Program
+input number : 3
+sample output:
+1
+212
+32123
+*/
+
+
+import java.util.*;
+class problem1{
+	public static void main(String s[]){
+		System.out.print("Enter the number of terms: ");
+		Scanner scan=new Scanner(System.in);
+		int n=scan.nextInt();					//getting input from user
+		System.out.println("The pattern is: ");
+		for(int i=1;i<=n;++i){
+			for(int j=i;j>1;--j)				//this loop is for printing backward
+			System.out.print(j);
+			for(int k=1;k<=i;++k)				//this loop is for printing frontward
+			System.out.print(k);
+			System.out.println();
+		}
+	}
+}
+
+
+
+/*
+Output:
+apprenticeship>java problem1
+Enter the number of terms: 5
+The pattern is:
+1
+212
+32123
+4321234
+543212345
+
+apprenticeship>
+*/
