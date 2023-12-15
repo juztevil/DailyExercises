@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bill Generator</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="evaluate.js"></script>
+    </head>
+    <body>
+       <div id="items">
+                <div class="row row-cols-1 row-cols-md-5 g-4">
+                    <div class="col">
+                      <div class="card">
+                        <img src="images/tiffin/idli.jpg" class="card-img-top">
+                        <div class="card-body">
+                          <h5 class="card-title">Idli (₹5)</h5>
+                          <button class="btn btn-primary" name="idli" onclick="increment(this)">+</button>
+                          <button class="btn btn-primary" name="idli" onclick="decrement(this)">-</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="images/tiffin/dosa.jpg" class="card-img-top" >
+                        <div class="card-body">
+                          <h5 class="card-title">Dosa (₹30)</h5>
+                          <button class="btn btn-primary" name="dosa" onclick="increment(this)">+</button>
+                          <button class="btn btn-primary" name="dosa" onclick="decrement(this)">-</button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="images/tiffin/poori.jpg" class="card-img-top" >
+                        <div class="card-body">
+                          <h5 class="card-title">Poori (₹40)</h5>
+                          <button class="btn btn-primary" name="poori" onclick="increment(this)">+</button>
+                          <button class="btn btn-primary" name="poori" onclick="decrement(this)">-</button>
+                        </div>
+                       </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="images/tiffin/pongal.jpg"  class="card-img-top" >
+                        <div class="card-body">
+                          <h5 class="card-title">Pongal (₹45)</h5>
+                          <button class="btn btn-primary" name="pongal" onclick="increment(this)">+</button>
+                          <button class="btn btn-primary" name="pongal" onclick="decrement(this)">-</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="images/lunch/meals.jpg" class="card-img-top">
+                        <div class="card-body">
+                          <h5 class="card-title">Meals (₹70)</h5>
+                          <button class="btn btn-primary" name="meals" onclick="increment(this)">+</button>
+                          <button class="btn btn-primary" name="meals" onclick="decrement(this)">-</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="images/lunch/briyani.jpg" class="card-img-top">
+                        <div class="card-body">
+                          <h5 class="card-title">Briyani</h5>
+                          <button class="btn btn-primary" name="briyani" onclick="increment(this)">+</button>
+                          <button class="btn btn-primary" name="briyani" onclick="decrement(this)">-</button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="images/dinner/porota.jpg" class="card-img-top">
+                        <div class="card-body">
+                          <h5 class="card-title">Porota</h5>
+                          <button class="btn btn-primary" name="porota" onclick="increment(this)">+</button>
+                          <button class="btn btn-primary" name="porota" onclick="decrement(this)">-</button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col">
+                      <div class="card">
+                        <img src="images/dinner/chappathi.jpg" class="card-img-top">
+                        <div class="card-body">
+                          <h5 class="card-title">Chappathi</h5>
+                          <button class="btn btn-primary" name="chappathi" onclick="increment(this)">+</button>
+                          <button class="btn btn-primary" name="chappathi" onclick="decrement(this)">-</button>
+                        </div>
+                       </div>
+                    </div>
+                </div>
+       </div>
+       <div id="bill_preview">
+        <center><h4><b>Bill Preview</b></h4></center>
+        <p>Idli</p><input id="idli" type="text"></input>
+        <p>Dosa</p><input id="dosa" type="text"></input>
+        <p>Poori</p><input id="poori" type="text"></input>
+        <p>Pongal</p><input id="pongal" type="text"></input>
+        <p>Meals</p><input id="meals" type="text"></input>
+        <p>Briyani</p><input id="briyani" type="text"></input>
+        <p>Porota</p><input id="porota" type="text"></input>
+        <p>Chappathi</p><input id="chappathi" type="text"></input><br><br>
+        <button onclick="totalbill()" class="btn btn-primary">Generate Bill</button>
+        <p id="totalbill"></p>
+       </div>
+       
+    </body>
+</html>
