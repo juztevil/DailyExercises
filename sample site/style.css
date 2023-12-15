@@ -1,0 +1,22 @@
+#items{
+    width : 75%;
+    height: 90%;
+    float: left;
+    background-color: lightblue;
+}
+#bill_preview{
+    width : 25%;
+    height:90%;
+    float : right;
+    background-color: lightpink;
+}
+img{
+    height :250px;
+}
+button{
+    width : 100px;
+    font-size: 10%;
+}
+h5{
+    text-align: center;
+}
