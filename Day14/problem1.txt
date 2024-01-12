@@ -1,0 +1,90 @@
+Database about madurai theaters and its owners
+
+database schema of madurai_theaters
+mysql> desc madurai_theaters;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| theater_id      | varchar(10) | NO   | PRI | NULL    |       |
+| theater_name    | varchar(20) | YES  |     | NULL    |       |
+| phone_number    | int         | YES  |     | NULL    |       |
+| website_address | varchar(30) | YES  |     | NULL    |       |
+| number_of_seats | int         | YES  |     | NULL    |       |
+| location        | varchar(30) | YES  |     | NULL    |       |
+| owner           | varchar(15) | YES  |     | NULL    |       |
+| built_on        | date        | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+
+
+database schema of madurai_theater_owners
+mysql> desc madurai_theater_owners;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| user_id      | varchar(10) | NO   |     | NULL    |       |
+| name         | varchar(20) | YES  |     | NULL    |       |
+| phone_number | int         | YES  |     | NULL    |       |
+| theater_id   | varchar(10) | NO   | MUL | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+
+
+madurai_theater table
+mysql> select * from madurai_theaters;
++------------+---------------------+--------------+---------------------------+-----------------+--------------------+-----------+------------+
+| theater_id | theater_name        | phone_number | website_address           | number_of_seats | location           | owner     | built_on   |
++------------+---------------------+--------------+---------------------------+-----------------+--------------------+-----------+------------+
+| MDU_001    | Thanga reegal       |           31 | www.thangareegal.com      |             120 | Bus stand          | user1@mdu | 1999-01-01 |
+| MDU_002    | Kutty Thanga reegal |           32 | www.kuttythangareegal.com |              90 | Bus stand opposite | user1@mdu | 1991-10-01 |
+| MDU_003    | Cini Priya          |           41 | www.cinipriya.com         |             120 | main bazzar        | user2@mdu | 2002-07-19 |
+| MDU_004    | Mini Priya          |           42 | www.minipriya.com         |              90 | main bazzar        | user2@mdu | 2001-05-05 |
+| MDU_005    | INOX                |           51 | www.inox.com              |              60 | mall               | user3@mdu | 2001-12-11 |
+| MDU_006    | Nanban Theaters     |           61 | www.nanbantheaters.com    |             120 | Thallakulam        | user4@mdu | 2012-01-30 |
+| MDU_007    | Kutty Cinemas       |           62 | www.kuttycinemas.com      |             150 | Mela Masi veedhi   | user4@mdu | 2015-09-23 |
++------------+---------------------+--------------+---------------------------+-----------------+--------------------+-----------+------------+
+
+madurai_theater_owners table
+mysql> select * from madurai_theater_owners;
++-----------+-------+--------------+------------+
+| user_id   | name  | phone_number | theater_id |
++-----------+-------+--------------+------------+
+| user1@mdu | user1 |          311 | MDU_001    |
+| user1@mdu | user1 |          311 | MDU_002    |
+| user2@mdu | user2 |          411 | MDU_003    |
+| user2@mdu | user2 |          411 | MDU_004    |
+| user3@mdu | user3 |          511 | MDU_005    |
+| user4@mdu | user4 |          611 | MDU_006    |
++-----------+-------+--------------+------------+
+
+
+
+Tasks
+1) The number of theatres in Madurai that were built before 2010.
+mysql> select count(*) as theaters_built_before_2010 from madurai_theaters where year(built_on)<"2010";
++----------------------------+
+| theaters_built_before_2010 |
++----------------------------+
+|                          5 |
++----------------------------+
+
+
+2) The name and address of the theatre owners who have more than 3 theatres.
+mysql> select name, count(*) as theater_count from madurai_theater_owners group by name;
++-------+---------------+
+| name  | theater_count |
++-------+---------------+
+| user1 |             4 |
+| user2 |             4 |
+| user3 |             1 |
+| user4 |             2 |
++-------+---------------+
+
+mysql> select name, count(*) as theater_count from madurai_theater_owners group by name having count(*)>4;
+Empty set (0.00 sec)
+
+mysql> select name, count(*) as theater_count from madurai_theater_owners group by name having count(*)>=4;
++-------+---------------+
+| name  | theater_count |
++-------+---------------+
+| user1 |             4 |
+| user2 |             4 |
++-------+---------------+
